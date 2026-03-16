@@ -17,7 +17,7 @@ export default function Testimonials() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 lg:grid-cols-3">
                     {siteContent.testimonials.map((item, index) => (
                         <motion.div
                             key={index}
@@ -25,7 +25,7 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white p-8 rounded-[28px] shadow-sm border border-slate-200 flex flex-col justify-between min-h-[400px]"
+                            className="min-w-[88%] snap-center bg-white p-8 rounded-[28px] shadow-sm border border-slate-200 flex flex-col justify-between min-h-[400px] md:min-w-0"
                         >
                             <div className="space-y-8">
                                 <div className="w-16 h-1 rounded-full bg-brand-burgundy/40" />

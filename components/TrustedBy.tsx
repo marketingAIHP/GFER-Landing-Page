@@ -18,7 +18,7 @@ export default function TrustedBy() {
                     {siteContent.clients.map((client) => (
                         <div
                             key={client.name}
-                            className="grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex justify-center py-6 px-8 border border-slate-100 rounded-xl"
+                            className="flex justify-center py-6 px-8 border border-slate-100 rounded-xl md:grayscale md:opacity-50 md:hover:grayscale-0 md:hover:opacity-100 transition-all duration-300"
                         >
                             {client.image ? (
                                 <div className="relative h-40 w-full max-w-[280px]">
