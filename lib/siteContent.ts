@@ -183,16 +183,16 @@ export const siteContent = {
       image: "/4-1.jpg",
     },
     {
-      name: "KollegeApply",
-      image: "/Artboard-14.jpg",
+      name: "Dentsu",
+      image: "/GFHJKJHGMHHGJH.png",
     },
     {
-      name: "FutureAge",
-      image: "/Artboard-4.jpg",
+      name: "OLX",
+      image: "/Group-274.jpg",
     },
     {
-      name: "UPS",
-      image: "/Group-301.jpg",
+      name: "ArcelorMittal",
+      image: "/Group-269.jpg",
     },
   ] satisfies Client[],
   process: [

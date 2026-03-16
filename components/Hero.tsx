@@ -13,7 +13,7 @@ export default function Hero() {
                     src={siteContent.hero.backgroundImage}
                     alt="AIHP Golf Course Extension Road"
                     fill
-                    className="object-cover"
+                    className="object-cover object-[62%_center] md:object-center"
                     priority
                 />
                 <div className="absolute inset-0 bg-brand-navy-ink/60" />

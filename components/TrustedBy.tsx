@@ -18,10 +18,10 @@ export default function TrustedBy() {
                     {siteContent.clients.map((client) => (
                         <div
                             key={client.name}
-                            className="flex justify-center py-6 px-8 border border-slate-100 rounded-xl md:grayscale md:opacity-50 md:hover:grayscale-0 md:hover:opacity-100 transition-all duration-300"
+                            className="flex justify-center py-4 px-4 border border-slate-100 rounded-xl md:py-6 md:px-8 md:grayscale md:opacity-50 md:hover:grayscale-0 md:hover:opacity-100 transition-all duration-300"
                         >
                             {client.image ? (
-                                <div className="relative h-40 w-full max-w-[280px]">
+                                <div className="relative h-24 w-full max-w-[140px] sm:h-28 sm:max-w-[160px] md:h-40 md:max-w-[280px]">
                                     <Image
                                         src={client.image}
                                         alt={client.name}
