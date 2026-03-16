@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+
+  /* AIHP Brand Colors */
+  --color-brand-burgundy: #8B1212;
+  --color-brand-navy-ink: #051622;
+  --color-brand-muted-teal: #128AA0;
+  --color-brand-pure-white: #FFFFFF;
+  --color-brand-almost-white: #F9FAFB;
+  --color-brand-modern-beige: #F0E8E0;
+  --color-brand-navy-grey: #1A2B47;
+  --color-brand-cool-grey: #6B7280;
+  --color-brand-slate-grey: #5A7C8C;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}

@@ -1,0 +1,63 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { siteContent } from "@/lib/siteContent";
+
+export default function Testimonials() {
+    return (
+        <section className="bg-brand-almost-white py-16 px-6">
+            <div className="max-w-[1280px] mx-auto space-y-12">
+                <div className="text-center space-y-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight">
+                        Trusted by Teams That Chose <span className="text-brand-burgundy">AIHP to Scale Faster</span>
+                    </h2>
+                    <p className="text-lg text-brand-navy-grey max-w-2xl mx-auto">
+                        Real feedback from businesses that wanted premium offices, quicker execution, and a smoother move-in experience.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {siteContent.testimonials.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="bg-white p-8 rounded-[28px] shadow-sm border border-slate-200 flex flex-col justify-between min-h-[400px]"
+                        >
+                            <div className="space-y-8">
+                                <div className="w-16 h-1 rounded-full bg-brand-burgundy/40" />
+                                <div className="border-l-4 border-brand-burgundy/40 pl-8 min-h-[190px]">
+                                    <p className="text-brand-navy-ink text-base md:text-lg leading-8 italic">
+                                        {item.quote}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="mt-10 flex items-center gap-4">
+                                <div className="relative h-16 w-16 overflow-hidden rounded-full border border-slate-200">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.name}
+                                        fill
+                                        className="object-cover"
+                                        sizes="64px"
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-xl font-bold leading-tight text-brand-navy-ink">
+                                        {item.name}
+                                    </p>
+                                    <p className="text-brand-navy-grey text-sm leading-relaxed">
+                                        {item.role}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
