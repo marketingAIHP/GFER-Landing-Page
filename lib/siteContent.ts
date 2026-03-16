@@ -16,6 +16,10 @@ export type Property = {
   description: string;
   image: string;
   href: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
 };
 
 export type Feature = {
@@ -91,6 +95,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/949dccc2-9f60-461e-8f9e-2a0c669d3f4e-e1770032516616.jpeg",
       href: "#lead-form",
+      coordinates: { lat: 28.3945, lng: 77.0715 },
     },
     {
       name: "M3M Urbana",
@@ -99,6 +104,7 @@ export const siteContent = {
         "Mixed-use destination suited for high-visibility office formats with strong retail adjacency.",
       image: "/Sites/Golf Course Ext. Road/M3M Urbana/M3M-Urbana.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.3987, lng: 77.0736 },
     },
     {
       name: "Unitech Business Zone",
@@ -108,6 +114,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Unitech Business Zone/UNITECH-BUSINESS-ZONE-1-e1753089211223.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4118, lng: 77.0629 },
     },
     {
       name: "Spaze Business Park",
@@ -117,6 +124,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Spaze Business Park/Spaze-Business-Park.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4026, lng: 77.0679 },
     },
     {
       name: "Pioneer Urban Square",
@@ -126,6 +134,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Pioneer Urban Square/Pioneer-Urban-Square.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4222, lng: 77.1062 },
     },
     {
       name: "Eros City Square",
@@ -135,6 +144,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Eros City Square/Eros-City-Square.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4137, lng: 77.0581 },
     },
     {
       name: "BPTP Centre One",
@@ -144,6 +154,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/BPTP Centre One/bptp-centra.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4211, lng: 77.1118 },
     },
     {
       name: "Silverton Tower",
@@ -153,6 +164,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Silverton Tower/Silverton-Tower.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4104, lng: 77.0644 },
     },
     {
       name: "Splendor Spectrum",
@@ -162,6 +174,7 @@ export const siteContent = {
       image:
         "/Sites/Golf Course Ext. Road/Splendor Spectrum/SPLENDOR-SPECTRUM-1.webp",
       href: "#lead-form",
+      coordinates: { lat: 28.4281, lng: 77.1102 },
     },
   ] satisfies Property[],
   clients: [

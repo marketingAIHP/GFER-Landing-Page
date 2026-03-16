@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink, MapPin } from "lucide-react";
 import type { Property } from "@/lib/siteContent";
 
 declare global {
@@ -16,6 +15,56 @@ type PropertyMapProps = {
 };
 
 const DEFAULT_CENTER = { lat: 28.4315, lng: 77.1037 };
+
+function createPropertyLabelOverlay(googleMaps: any, map: any, position: any, title: string) {
+  class PropertyLabelOverlay extends googleMaps.OverlayView {
+    div: HTMLDivElement | null = null;
+    position: any;
+    title: string;
+
+    constructor(overlayPosition: any, overlayTitle: string) {
+      super();
+      this.position = overlayPosition;
+      this.title = overlayTitle;
+    }
+
+    onAdd() {
+      const div = document.createElement("div");
+      div.className = "pointer-events-none absolute -translate-y-1/2";
+      div.innerHTML = `
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,0.96);box-shadow:0 10px 30px rgba(5,22,34,0.16);border:1px solid rgba(139,18,18,0.12);font-family:Segoe UI,Arial,sans-serif;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#1A2B47;white-space:nowrap;">
+          <span style="width:14px;height:14px;border-radius:999px;background:#8B1212;box-shadow:0 0 0 4px rgba(139,18,18,0.14);display:inline-block;"></span>
+          <span>${this.title}</span>
+        </div>
+      `;
+
+      this.div = div;
+      const panes = this.getPanes();
+      panes?.overlayMouseTarget.appendChild(div);
+    }
+
+    draw() {
+      const projection = this.getProjection();
+      const pixel = projection?.fromLatLngToDivPixel(this.position);
+
+      if (!this.div || !pixel) {
+        return;
+      }
+
+      this.div.style.left = `${pixel.x + 14}px`;
+      this.div.style.top = `${pixel.y - 8}px`;
+    }
+
+    onRemove() {
+      this.div?.remove();
+      this.div = null;
+    }
+  }
+
+  const overlay = new PropertyLabelOverlay(position, title);
+  overlay.setMap(map);
+  return overlay;
+}
 
 function loadGoogleMaps(apiKey: string) {
   if (typeof window === "undefined") {
@@ -67,7 +116,7 @@ export default function PropertyMap({ properties }: PropertyMapProps) {
         const googleMaps = window.google.maps;
         const map = new googleMaps.Map(mapRef.current, {
           center: DEFAULT_CENTER,
-          zoom: 13,
+          zoom: 14,
           mapTypeControl: false,
           streetViewControl: false,
           fullscreenControl: true,
@@ -77,50 +126,44 @@ export default function PropertyMap({ properties }: PropertyMapProps) {
           ],
         });
 
-        const geocoder = new googleMaps.Geocoder();
         const bounds = new googleMaps.LatLngBounds();
         const infoWindow = new googleMaps.InfoWindow();
 
-        await Promise.all(
-          properties.map(
-            (property) =>
-              new Promise<void>((resolve) => {
-                const query = `${property.name}, Golf Course Extension Road, Gurugram, Haryana`;
+        properties.forEach((property) => {
+          const position = new googleMaps.LatLng(
+            property.coordinates.lat,
+            property.coordinates.lng
+          );
 
-                geocoder.geocode(
-                  { address: query },
-                  (results: any[] | null, geocodeStatus: string) => {
-                  if (
-                    geocodeStatus === "OK" &&
-                    results &&
-                    results[0]?.geometry?.location
-                  ) {
-                    const marker = new googleMaps.Marker({
-                      map,
-                      position: results[0].geometry.location,
-                      title: property.name,
-                      animation: googleMaps.Animation.DROP,
-                    });
+          const marker = new googleMaps.Marker({
+            map,
+            position,
+            title: property.name,
+            animation: googleMaps.Animation.DROP,
+            icon: {
+              path: googleMaps.SymbolPath.CIRCLE,
+              fillColor: "#8B1212",
+              fillOpacity: 1,
+              strokeColor: "#FFFFFF",
+              strokeWeight: 2,
+              scale: 0,
+            },
+          });
 
-                    marker.addListener("click", () => {
-                      infoWindow.setContent(
-                        `<div style="padding:8px 10px; font-family:Segoe UI, Arial, sans-serif;">
-                          <div style="font-weight:700; color:#051622;">${property.name}</div>
-                          <div style="margin-top:4px; color:#475569;">${property.location}</div>
-                        </div>`
-                      );
-                      infoWindow.open({ anchor: marker, map });
-                    });
+          createPropertyLabelOverlay(googleMaps, map, position, property.name);
 
-                    bounds.extend(results[0].geometry.location);
-                  }
+          marker.addListener("click", () => {
+            infoWindow.setContent(
+              `<div style="padding:8px 10px; font-family:Segoe UI, Arial, sans-serif;">
+                <div style="font-weight:700; color:#051622;">${property.name}</div>
+                <div style="margin-top:4px; color:#475569;">${property.location}</div>
+              </div>`
+            );
+            infoWindow.open({ anchor: marker, map });
+          });
 
-                    resolve();
-                  }
-                );
-              })
-          )
-        );
+          bounds.extend(position);
+        });
 
         if (!bounds.isEmpty()) {
           map.fitBounds(bounds, 60);
@@ -154,47 +197,15 @@ export default function PropertyMap({ properties }: PropertyMapProps) {
   }
 
   return (
-    <div className="space-y-5">
-      <div className="relative h-[360px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-        <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
-        {status === "loading" && (
-          <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
-            <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
-              Loading map...
-            </div>
+    <div className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
+      <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
+      {status === "loading" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+          <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
+            Loading map...
           </div>
-        )}
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="mb-4 flex items-center gap-2">
-          <MapPin className="h-5 w-5 text-brand-burgundy" />
-          <h3 className="text-lg font-bold uppercase tracking-wide text-brand-navy-ink">
-            Sites On This Corridor
-          </h3>
         </div>
-
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {properties.map((property) => {
-            const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              `${property.name}, Golf Course Extension Road, Gurugram`
-            )}`;
-
-            return (
-              <a
-                key={property.name}
-                href={mapsHref}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-brand-navy-ink transition-colors hover:border-brand-burgundy/30 hover:bg-brand-almost-white"
-              >
-                <span>{property.name}</span>
-                <ExternalLink className="h-4 w-4 shrink-0 text-brand-burgundy" />
-              </a>
-            );
-          })}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
