@@ -12,7 +12,7 @@ export default function Navbar() {
                         alt="AIHP Logo"
                         fill
                         className="object-contain object-left"
-                        priority
+                        sizes="256px"
                     />
                 </div>
 

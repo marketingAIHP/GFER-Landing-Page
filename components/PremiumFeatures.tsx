@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { siteContent } from "@/lib/siteContent";
 
 export default function PremiumFeatures() {
@@ -18,12 +15,8 @@ export default function PremiumFeatures() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {siteContent.features.map((feature, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
                             className="p-8 rounded-2xl border border-slate-100 bg-brand-almost-white/50 hover:bg-white hover:shadow-xl transition-all duration-300 group"
                         >
                             <div className="w-14 h-14 bg-brand-burgundy/10 rounded-xl flex items-center justify-center text-brand-burgundy mb-6 group-hover:bg-brand-burgundy group-hover:text-white transition-colors">
@@ -35,7 +28,7 @@ export default function PremiumFeatures() {
                             <p className="text-brand-navy-grey text-sm leading-relaxed">
                                 {feature.description}
                             </p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

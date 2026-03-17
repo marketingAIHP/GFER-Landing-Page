@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { siteContent } from "@/lib/siteContent";
 
 export default function Testimonials() {
@@ -19,12 +16,8 @@ export default function Testimonials() {
 
                 <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:pb-0 lg:grid-cols-3">
                     {siteContent.testimonials.map((item, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
                             className="min-w-[88%] snap-center bg-white p-8 rounded-[28px] shadow-sm border border-slate-200 flex flex-col justify-between min-h-[400px] md:min-w-0"
                         >
                             <div className="space-y-8">
@@ -54,7 +47,7 @@ export default function Testimonials() {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

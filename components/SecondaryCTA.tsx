@@ -32,7 +32,7 @@ export default function SecondaryCTA() {
 
                 <div className="flex justify-center lg:justify-end w-full max-w-[680px] mx-auto lg:mx-0">
                     <div id="secondary-lead-form" className="w-full scroll-mt-28">
-                        <HubSpotForm />
+                        <HubSpotForm loadStrategy="visible" />
                     </div>
                 </div>
             </div>

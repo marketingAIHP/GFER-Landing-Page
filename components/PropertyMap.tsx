@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import LazyMount from "./LazyMount";
 import type { Property } from "@/lib/siteContent";
 
 declare global {
   interface Window {
-    google?: any;
+    google?: GoogleWindow;
     __googleMapsInitPromise?: Promise<void>;
   }
 }
@@ -14,15 +15,85 @@ type PropertyMapProps = {
   properties: readonly Property[];
 };
 
+type GoogleWindow = {
+  maps: GoogleMapsNamespace;
+};
+
+type GoogleMapsNamespace = {
+  Map: new (element: HTMLElement, options: GoogleMapOptions) => GoogleMapInstance;
+  Marker: new (options: GoogleMarkerOptions) => GoogleMarkerInstance;
+  LatLng: new (lat: number, lng: number) => GoogleLatLng;
+  LatLngBounds: new () => GoogleLatLngBounds;
+  InfoWindow: new () => GoogleInfoWindow;
+  OverlayView: typeof GoogleOverlayView;
+  Animation: { DROP: unknown };
+  SymbolPath: { CIRCLE: unknown };
+};
+
+type GoogleOverlayView = new () => {
+  setMap(map: GoogleMapInstance | null): void;
+  getPanes(): { overlayMouseTarget: Element } | null;
+  getProjection(): { fromLatLngToDivPixel(position: GoogleLatLng): { x: number; y: number } | null } | null;
+};
+
+type GoogleMapOptions = {
+  center: { lat: number; lng: number };
+  zoom: number;
+  mapTypeControl: boolean;
+  streetViewControl: boolean;
+  fullscreenControl: boolean;
+  styles: Array<{ featureType: string; stylers: Array<{ visibility: "off" }> }>;
+};
+
+type GoogleMapInstance = {
+  fitBounds(bounds: GoogleLatLngBounds, padding?: number): void;
+};
+
+type GoogleLatLng = object;
+
+type GoogleLatLngBounds = {
+  extend(position: GoogleLatLng): void;
+  isEmpty(): boolean;
+};
+
+type GoogleMarkerOptions = {
+  map: GoogleMapInstance;
+  position: GoogleLatLng;
+  title: string;
+  animation: unknown;
+  icon: {
+    path: unknown;
+    fillColor: string;
+    fillOpacity: number;
+    strokeColor: string;
+    strokeWeight: number;
+    scale: number;
+  };
+};
+
+type GoogleMarkerInstance = {
+  addListener(eventName: "click", handler: () => void): void;
+};
+
+type GoogleInfoWindow = {
+  setContent(html: string): void;
+  open(options: { anchor: GoogleMarkerInstance; map: GoogleMapInstance }): void;
+};
+
 const DEFAULT_CENTER = { lat: 28.4315, lng: 77.1037 };
 
-function createPropertyLabelOverlay(googleMaps: any, map: any, position: any, title: string) {
+function createPropertyLabelOverlay(
+  googleMaps: GoogleMapsNamespace,
+  map: GoogleMapInstance,
+  position: GoogleLatLng,
+  title: string
+) {
   class PropertyLabelOverlay extends googleMaps.OverlayView {
     div: HTMLDivElement | null = null;
-    position: any;
+    position: GoogleLatLng;
     title: string;
 
-    constructor(overlayPosition: any, overlayTitle: string) {
+    constructor(overlayPosition: GoogleLatLng, overlayTitle: string) {
       super();
       this.position = overlayPosition;
       this.title = overlayTitle;
@@ -197,15 +268,27 @@ export default function PropertyMap({ properties }: PropertyMapProps) {
   }
 
   return (
-    <div className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-      <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
-      {status === "loading" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+    <LazyMount
+      rootMargin="300px"
+      className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl"
+      fallback={
+        <div className="flex h-full items-center justify-center bg-brand-almost-white">
           <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
-            Loading map...
+            Load map
           </div>
         </div>
-      )}
-    </div>
+      }
+    >
+      <div className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
+        <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
+        {status === "loading" && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+            <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
+              Loading map...
+            </div>
+          </div>
+        )}
+      </div>
+    </LazyMount>
   );
 }

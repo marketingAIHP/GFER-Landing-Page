@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { siteContent } from "@/lib/siteContent";
 
 export default function Process() {
@@ -20,12 +17,8 @@ export default function Process() {
                     <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[2px] bg-brand-burgundy/20" />
 
                     {siteContent.process.map((step, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
                             className="relative flex flex-col items-center text-center space-y-6 z-10"
                         >
                             <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center border-4 border-brand-burgundy/10 shadow-lg mb-4">
@@ -39,7 +32,7 @@ export default function Process() {
                                     {step.description}
                                 </p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

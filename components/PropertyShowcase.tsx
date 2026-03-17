@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { MapPin, ChevronRight, ChevronLeft } from "lucide-react";
-import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
 import { siteContent } from "@/lib/siteContent";
@@ -87,13 +86,7 @@ export default function PropertyShowcase() {
                                 key={index}
                                 className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] pl-6"
                             >
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                    className="bg-white rounded-2xl overflow-hidden shadow-md group hover:shadow-xl transition-all duration-300 border border-slate-100 h-full flex flex-col"
-                                >
+                                <div className="bg-white rounded-2xl overflow-hidden shadow-md group hover:shadow-xl transition-all duration-300 border border-slate-100 h-full flex flex-col">
                                     <div className="relative h-60 overflow-hidden">
                                         <Image
                                             src={property.image}
@@ -121,7 +114,7 @@ export default function PropertyShowcase() {
                                             </span>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             </div>
                         ))}
                     </div>
