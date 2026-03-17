@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { siteContent } from "@/lib/siteContent";
 import "./globals.css";
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
