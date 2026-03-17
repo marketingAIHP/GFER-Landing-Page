@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import LinkedInInsight from "@/components/LinkedInInsight";
 import MetaPixel from "@/components/MetaPixel";
 import { siteContent } from "@/lib/siteContent";
 import "./globals.css";
@@ -26,10 +27,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://rbzud.share-na2.hsforms.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://static.hsappstatic.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://snap.licdn.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <GoogleAnalytics />
         <MetaPixel />
+        <LinkedInInsight />
         {children}
       </body>
     </html>
