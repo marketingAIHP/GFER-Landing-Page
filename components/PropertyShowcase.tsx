@@ -47,7 +47,7 @@ export default function PropertyShowcase() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-4 max-w-5xl">
                         <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight leading-tight md:whitespace-nowrap">
-                            AIHP&apos;S PREMIUM MANAGED <span className="text-brand-burgundy">OFFICES IN GOLF COURSE EXTENSION ROAD</span>
+                            AIHP<span className="normal-case">&apos;s</span> PREMIUM MANAGED <span className="text-brand-burgundy">OFFICES IN GOLF COURSE EXTENSION ROAD</span>
                         </h2>
                         <p className="text-lg text-brand-navy-grey">
                             Explore office destinations across Golf Course Extension Road, curated for visibility, flexibility, and faster occupancy.
