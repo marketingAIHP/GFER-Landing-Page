@@ -25,15 +25,13 @@ type GoogleMapsNamespace = {
   LatLng: new (lat: number, lng: number) => GoogleLatLng;
   LatLngBounds: new () => GoogleLatLngBounds;
   InfoWindow: new () => GoogleInfoWindow;
-  OverlayView: typeof GoogleOverlayView;
+  OverlayView: new () => {
+    setMap(map: GoogleMapInstance | null): void;
+    getPanes(): { overlayMouseTarget: Element } | null;
+    getProjection(): { fromLatLngToDivPixel(position: GoogleLatLng): { x: number; y: number } | null } | null;
+  };
   Animation: { DROP: unknown };
   SymbolPath: { CIRCLE: unknown };
-};
-
-type GoogleOverlayView = new () => {
-  setMap(map: GoogleMapInstance | null): void;
-  getPanes(): { overlayMouseTarget: Element } | null;
-  getProjection(): { fromLatLngToDivPixel(position: GoogleLatLng): { x: number; y: number } | null } | null;
 };
 
 type GoogleMapOptions = {
