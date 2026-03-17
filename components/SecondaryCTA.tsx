@@ -3,7 +3,7 @@ import { siteContent } from "@/lib/siteContent";
 
 export default function SecondaryCTA() {
     return (
-        <section className="bg-brand-navy-ink py-18 px-6 relative overflow-hidden">
+        <section className="bg-brand-navy-ink py-24 px-6 relative overflow-hidden">
             <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-burgundy/10 rounded-full blur-3xl" />
             <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-muted-teal/10 rounded-full blur-3xl" />
 
@@ -11,7 +11,7 @@ export default function SecondaryCTA() {
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                            Need a managed office on <span className="text-brand-burgundy">{siteContent.secondaryCta.highlight}?</span>
+                            Need a managed office on <span className="text-brand-burgundy">{siteContent.secondaryCta.highlight}</span>
                         </h2>
                         <p className="text-xl text-white/80 leading-relaxed">
                             {siteContent.secondaryCta.description}

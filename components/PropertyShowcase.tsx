@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, ChevronRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
@@ -43,12 +43,12 @@ export default function PropertyShowcase() {
     }, [emblaApi, setScrollSnaps, onSelect]);
 
     return (
-        <section className="bg-brand-almost-white py-16 px-6">
-            <div className="max-w-[1280px] mx-auto space-y-10">
+        <section className="bg-brand-almost-white py-20 px-6">
+            <div className="max-w-[1280px] mx-auto space-y-12">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="space-y-4 max-w-2xl">
-                        <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight leading-tight md:whitespace-nowrap">
-                            <span className="normal-case">AIHP&apos;s</span> Premium Managed <span className="text-brand-burgundy">Offices on Golf Course Extension Road</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight leading-tight">
+                            Premium Managed <span className="text-brand-burgundy">Offices on GCE Road</span>
                         </h2>
                         <p className="text-lg text-brand-navy-grey">
                             Explore office destinations across Golf Course Extension Road, curated for visibility, flexibility, and faster occupancy.
@@ -103,7 +103,7 @@ export default function PropertyShowcase() {
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                     </div>
-                                    <div className="p-7 space-y-4 flex-grow">
+                                    <div className="p-7 space-y-4 flex-grow flex flex-col justify-between">
                                         <div className="space-y-1">
                                             <div className="flex items-center gap-1.5 text-brand-burgundy">
                                                 <MapPin className="w-3.5 h-3.5" />
@@ -114,6 +114,12 @@ export default function PropertyShowcase() {
                                         <p className="text-brand-navy-grey text-sm leading-relaxed">
                                             {property.description}
                                         </p>
+                                        <div className="pt-4 border-t border-slate-50">
+                                            <span className="flex items-center gap-2 text-brand-burgundy font-bold text-sm">
+                                                Managed office option
+                                                <ChevronRight className="w-4 h-4" />
+                                            </span>
+                                        </div>
                                     </div>
                                 </motion.div>
                             </div>

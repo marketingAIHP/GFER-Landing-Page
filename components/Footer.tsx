@@ -46,22 +46,42 @@ export default function Footer() {
                     <h4 className="text-lg font-bold text-white uppercase tracking-wider">Quick Links</h4>
                     <ul className="space-y-3 mt-4">
                         <li>
-                            <a href="https://aihp.in/about/" className="text-white/60 hover:text-white transition-colors">
+                            <a
+                                href="https://aihp.in/about/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white/60 hover:text-white transition-colors"
+                            >
                                 About
                             </a>
                         </li>
                         <li>
-                            <a href="https://aihp.in/location/" className="text-white/60 hover:text-white transition-colors">
+                            <a
+                                href="https://aihp.in/location/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white/60 hover:text-white transition-colors"
+                            >
                                 Locations
                             </a>
                         </li>
                         <li>
-                            <a href="https://aihp.in/our-clients/" className="text-white/60 hover:text-white transition-colors">
+                            <a
+                                href="https://aihp.in/our-clients/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white/60 hover:text-white transition-colors"
+                            >
                                 Clients
                             </a>
                         </li>
                         <li>
-                            <a href="https://aihp.in/gallery/" className="text-white/60 hover:text-white transition-colors">
+                            <a
+                                href="https://aihp.in/gallery/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white/60 hover:text-white transition-colors"
+                            >
                                 Gallery
                             </a>
                         </li>
