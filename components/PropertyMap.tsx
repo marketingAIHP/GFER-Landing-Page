@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import LazyMount from "./LazyMount";
 import type { Property } from "@/lib/siteContent";
 
 declare global {
@@ -266,27 +265,22 @@ export default function PropertyMap({ properties }: PropertyMapProps) {
   }
 
   return (
-    <LazyMount
-      rootMargin="300px"
-      className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl"
-      fallback={
-        <div className="flex h-full items-center justify-center bg-brand-almost-white">
+    <div className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
+      <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
+      {status === "loading" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
           <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
-            Load map
+            Loading map...
           </div>
         </div>
-      }
-    >
-      <div className="relative h-[520px] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-        <div ref={mapRef} className="h-full w-full bg-brand-almost-white" />
-        {status === "loading" && (
-          <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
-            <div className="rounded-full bg-brand-navy-ink px-4 py-2 text-sm font-semibold text-white">
-              Loading map...
-            </div>
-          </div>
-        )}
-      </div>
-    </LazyMount>
+      )}
+      {status === "error" && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/92 p-6 text-center">
+          <p className="max-w-sm text-sm font-medium text-brand-navy-grey">
+            The interactive map could not be loaded right now. Please verify the Google Maps API key and domain restrictions.
+          </p>
+        </div>
+      )}
+    </div>
   );
 }

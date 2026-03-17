@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { MapPin, ChevronRight, ChevronLeft } from "lucide-react";
+import { MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
 import { siteContent } from "@/lib/siteContent";
@@ -45,9 +45,9 @@ export default function PropertyShowcase() {
         <section className="bg-brand-almost-white py-20 px-6">
             <div className="max-w-[1280px] mx-auto space-y-12">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="space-y-4 max-w-2xl">
-                        <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight leading-tight">
-                            Premium Managed <span className="text-brand-burgundy">Offices on GCE Road</span>
+                    <div className="space-y-4 max-w-5xl">
+                        <h2 className="text-3xl md:text-4xl font-bold text-brand-navy-ink uppercase tracking-tight leading-tight md:whitespace-nowrap">
+                            AIHP&apos;S PREMIUM MANAGED <span className="text-brand-burgundy">OFFICES IN GOLF COURSE EXTENSION ROAD</span>
                         </h2>
                         <p className="text-lg text-brand-navy-grey">
                             Explore office destinations across Golf Course Extension Road, curated for visibility, flexibility, and faster occupancy.
@@ -107,12 +107,6 @@ export default function PropertyShowcase() {
                                         <p className="text-brand-navy-grey text-sm leading-relaxed">
                                             {property.description}
                                         </p>
-                                        <div className="pt-4 border-t border-slate-50">
-                                            <span className="flex items-center gap-2 text-brand-burgundy font-bold text-sm">
-                                                Managed office option
-                                                <ChevronRight className="w-4 h-4" />
-                                            </span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
