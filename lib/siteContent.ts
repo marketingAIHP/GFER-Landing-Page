@@ -66,7 +66,7 @@ export const siteContent = {
     phoneDisplay: "+91 7303060067",
     phoneHref: "tel:+917303060067",
     email: "leasing@aihp.in",
-    address: "AIHP Tower 3rd Floor, 249 G, Udyog Vihar, Phase 4, Gurgaon 122015",
+    address: "AIHP Tower, 3rd Floor, 249 G, Udyog Vihar, Phase 4, Gurgaon 122015",
   },
   hero: {
     highlight: "Golf Course Extension Road",
