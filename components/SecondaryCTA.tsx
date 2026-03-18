@@ -11,7 +11,7 @@ export default function SecondaryCTA() {
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                            Need a managed office on <span className="text-brand-burgundy">{siteContent.secondaryCta.highlight}</span>
+                            Need a managed office on <span className="text-brand-burgundy">{siteContent.secondaryCta.highlight}?</span>
                         </h2>
                         <p className="text-xl text-white/80 leading-relaxed">
                             {siteContent.secondaryCta.description}
