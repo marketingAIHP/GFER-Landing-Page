@@ -81,9 +81,9 @@ export const siteContent = {
     ],
   },
   stats: [
-    { icon: Building2, stat: "5M+", label: "SQ FT DELIVERED" },
+    { icon: Building2, stat: "10M+", label: "SQ. FT DELIVERED" },
     { icon: Users2, stat: "500+", label: "Clients Served" },
-    { icon: Calendar, stat: "12", label: "Years Experience" },
+    { icon: Calendar, stat: "15+", label: "Years Experience" },
     { icon: Layout, stat: "20-500+", label: "Seat Formats" },
   ] satisfies Stat[],
   properties: [
@@ -282,7 +282,7 @@ export const siteContent = {
     highlight: "Golf Course Extension Road",
     description:
       "Tell us your seat count and workplace requirements. We’ll help you compare the right assets across the corridor and move faster.",
-    statOne: { value: "5M+", label: "Sq. Ft. Delivered" },
+    statOne: { value: "10M+", label: "Sq. Ft. Delivered" },
     statTwo: { value: "20-500+", label: "Seats supported" },
   },
   footer: {

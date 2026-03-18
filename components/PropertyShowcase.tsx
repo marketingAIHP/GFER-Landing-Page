@@ -114,19 +114,27 @@ export default function PropertyShowcase() {
                     </div>
                 </div>
 
-                <div className="flex justify-center gap-2 mt-8">
+                <div className="mt-8 flex justify-center gap-2">
                     {scrollSnaps.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => scrollTo(index)}
                             className={cn(
-                                "h-1.5 rounded-full transition-all duration-300",
-                                selectedIndex === index
-                                    ? "w-8 bg-brand-burgundy"
-                                    : "w-2 bg-brand-slate-grey/20 hover:bg-brand-slate-grey/40"
+                                "flex h-12 w-12 items-center justify-center rounded-full transition-colors",
+                                selectedIndex === index ? "bg-brand-burgundy/10" : "hover:bg-brand-slate-grey/10"
                             )}
                             aria-label={`Go to slide ${index + 1}`}
-                        />
+                            aria-current={selectedIndex === index ? "true" : undefined}
+                        >
+                            <span
+                                className={cn(
+                                    "rounded-full transition-all duration-300",
+                                    selectedIndex === index
+                                        ? "h-2.5 w-8 bg-brand-burgundy"
+                                        : "h-2.5 w-2.5 bg-brand-slate-grey/45"
+                                )}
+                            />
+                        </button>
                     ))}
                 </div>
             </div>

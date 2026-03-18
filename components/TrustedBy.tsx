@@ -9,8 +9,8 @@ export default function TrustedBy() {
                     <h2 className="text-3xl font-bold text-brand-navy-ink tracking-tight uppercase">
                         Trusted by Industry Leaders
                     </h2>
-                    <p className="text-brand-cool-grey font-medium uppercase tracking-[0.2em] text-sm">
-                        12 years | 500+ clients | premium managed offices
+                    <p className="text-brand-navy-grey font-medium uppercase tracking-[0.2em] text-sm">
+                        15+ years | 500+ clients | premium managed offices
                     </p>
                 </div>
 

@@ -25,9 +25,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://rbzud.share-na2.hsforms.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://static.hsappstatic.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://snap.licdn.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <GoogleAnalytics />

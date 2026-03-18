@@ -23,18 +23,18 @@ export default function Footer() {
                 </div>
 
                 {/* Contact Info */}
-                <div className="space-y-6 text-left">
-                    <h4 className="text-lg font-bold text-white uppercase tracking-wider">Contact Us</h4>
+                <div className="space-y-7 text-left">
+                    <h3 className="text-lg font-bold text-white uppercase tracking-wider">Contact Us</h3>
                     <ul className="space-y-4">
-                        <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+                        <li className="flex items-center gap-4 text-white/78 transition-colors hover:text-white">
                             <Phone className="w-5 h-5 text-brand-burgundy" />
                             <span>{siteContent.contact.phoneDisplay}</span>
                         </li>
-                        <li className="flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+                        <li className="flex items-center gap-4 text-white/78 transition-colors hover:text-white">
                             <Mail className="w-5 h-5 text-brand-burgundy" />
                             <span>{siteContent.contact.email}</span>
                         </li>
-                        <li className="flex items-start gap-3 text-white/60 hover:text-white transition-colors">
+                        <li className="flex items-start gap-4 text-white/78 transition-colors hover:text-white">
                             <MapPin className="w-5 h-5 text-brand-burgundy flex-shrink-0" />
                             <span>{siteContent.contact.address}</span>
                         </li>
@@ -43,14 +43,14 @@ export default function Footer() {
 
                 {/* Quick Links */}
                 <div className="text-left">
-                    <h4 className="text-lg font-bold text-white uppercase tracking-wider">Quick Links</h4>
+                    <h3 className="text-lg font-bold text-white uppercase tracking-wider">Quick Links</h3>
                     <ul className="space-y-3 mt-4">
                         <li>
                             <a
                                 href="https://aihp.in/about/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
+                                className="text-white/78 transition-colors hover:text-white"
                             >
                                 About
                             </a>
@@ -60,7 +60,7 @@ export default function Footer() {
                                 href="https://aihp.in/location/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
+                                className="text-white/78 transition-colors hover:text-white"
                             >
                                 Locations
                             </a>
@@ -70,7 +70,7 @@ export default function Footer() {
                                 href="https://aihp.in/our-clients/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
+                                className="text-white/78 transition-colors hover:text-white"
                             >
                                 Clients
                             </a>
@@ -80,7 +80,7 @@ export default function Footer() {
                                 href="https://aihp.in/gallery/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-white/60 hover:text-white transition-colors"
+                                className="text-white/78 transition-colors hover:text-white"
                             >
                                 Gallery
                             </a>

@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import PropertyMap from "./PropertyMap";
+import LazyMount from "./LazyMount";
 import { siteContent } from "@/lib/siteContent";
 
 export default function LocationBenefits() {
@@ -27,7 +28,18 @@ export default function LocationBenefits() {
                 </div>
 
                 <div className="space-y-5">
-                    <PropertyMap properties={siteContent.properties} />
+                    <LazyMount
+                        rootMargin="100px"
+                        fallback={
+                            <div className="flex h-[520px] items-center justify-center rounded-2xl border-4 border-white bg-white p-6 text-center shadow-xl">
+                                <p className="max-w-sm text-sm font-medium text-brand-navy-grey">
+                                    Loading interactive property map...
+                                </p>
+                            </div>
+                        }
+                    >
+                        <PropertyMap properties={siteContent.properties} />
+                    </LazyMount>
                 </div>
             </div>
         </section>

@@ -13,7 +13,7 @@ export default function Hero() {
                     className="object-cover object-[62%_center] md:object-center"
                     priority
                     fetchPriority="high"
-                    quality={60}
+                    quality={45}
                     sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-brand-navy-ink/60" />
@@ -22,12 +22,12 @@ export default function Hero() {
             <div className="relative z-10 max-w-[1360px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-28 items-center">
                 {/* Left Side: Content */}
                 <div className="lg:pr-4">
-                    <div className="rounded-[32px] bg-white/68 p-8 shadow-[0_26px_80px_rgba(5,22,34,0.24)] ring-1 ring-white/45 backdrop-blur-sm md:p-10 lg:p-12">
+                    <div className="rounded-[32px] bg-white/88 p-8 shadow-[0_26px_80px_rgba(5,22,34,0.24)] ring-1 ring-white/70 backdrop-blur-sm md:p-10 lg:p-12">
                         <div className="space-y-6">
-                            <h1 className="max-w-[14ch] text-[clamp(1.7rem,3.4vw,2.85rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-[#7D2328] [font-family:Georgia,'Times_New_Roman',serif]">
+                            <h1 className="max-w-[14ch] text-[clamp(1.7rem,3.4vw,2.85rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-brand-burgundy [font-family:Georgia,'Times_New_Roman',serif]">
                                 Office Space for Rent on {siteContent.hero.highlight}
                             </h1>
-                            <p className="max-w-[30ch] text-lg leading-[1.55] text-brand-navy-ink/82 md:text-xl">
+                            <p className="max-w-[30ch] text-lg leading-[1.55] text-brand-navy-grey md:text-xl">
                                 {siteContent.hero.description}
                             </p>
                         </div>
